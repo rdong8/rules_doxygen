@@ -33,8 +33,9 @@ def _collect_files_aspect_impl(_, ctx):
     direct_files = []
     srcs = ctx.rule.attr.srcs if hasattr(ctx.rule.attr, "srcs") else []
     hdrs = ctx.rule.attr.hdrs if hasattr(ctx.rule.attr, "hdrs") else []
+    module_interfaces = ctx.rule.attr.module_interfaces if hasattr(ctx.rule.attr, "module_interfaces") else []
     data = ctx.rule.attr.data if hasattr(ctx.rule.attr, "data") else []
-    for src in srcs + hdrs + data:
+    for src in srcs + hdrs + module_interfaces + data:
         if hasattr(src, "files"):
             direct_files.extend(src.files.to_list())
 
