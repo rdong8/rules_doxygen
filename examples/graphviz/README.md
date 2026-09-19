@@ -10,7 +10,7 @@ bazel build //doxyfile:doxygen
 
 ## Custom dot binary
 
-To ensure the `dot` binary is available to the rule, make sure to add it to the sources of the macro.
+To use a custom or hermetic `dot` binary, provide the target to the `dot_executable` attribute.
 Also, remember to add the `have_dot = True` parameter, otherwise no graphs will be produced.
 
 ```bzl
@@ -30,7 +30,7 @@ filegroup(
     ),
 )
 
-# Ideally, instead of using a local filegroup, you would want and external module, like "@graphviz//:bin/dot"
+# Ideally, instead of using a local filegroup, you would want an external module, like "@graphviz//:dot"
 
 doxygen(
     name = "doxygen",
@@ -38,7 +38,7 @@ doxygen(
         "*.h",
         "*.cpp",
         "*.sh",
-    ]) + [":dot_executable"],
+    ]),
     dot_executable = ":dot_executable",
     have_dot = True,
     project_name = "graphviz",

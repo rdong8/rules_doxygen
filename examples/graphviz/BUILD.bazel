@@ -7,7 +7,7 @@ doxygen(
         "*.h",
         "*.cpp",
         "*.sh",
-    ]) + ["@graphviz//:executable"],
+    ]),
     dot_executable = "@graphviz//:executable",
     have_dot = True,
     project_brief = "Example project for doxygen",
