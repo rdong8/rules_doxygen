@@ -3,12 +3,15 @@ load("@doxygen//:doxygen.bzl", "doxygen")
 # WARNINING: this assume the existence of a repository @graphviz exposing the target :executable
 doxygen(
     name = "doxygen",
-    srcs = glob([
-        "*.h",
-        "*.cpp",
-        "*.sh",
-    ]),
-    dot_executable = "@graphviz//:executable",
+    srcs = glob(
+        [
+            "*.h",
+            "*.cpp",
+            "*.sh",
+        ],
+        allow_empty = True,
+    ),
+    dot_executable = "@graphviz//:dot",
     have_dot = True,
     project_brief = "Example project for doxygen",
     project_name = "graphviz",
