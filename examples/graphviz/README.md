@@ -14,7 +14,10 @@ Depending on how `graphviz` is provided, there are two mutually exclusive ways t
 
 ### 1. Hermetic Bazel target (`dot_executable`)
 
-For a fully hermetic build using a Bazel target (e.g. from the BCR's [`@graphviz`](https://registry.bazel.build/modules/graphviz) module or a local target), pass the label to the **`dot_executable`** attribute:
+For a fully hermetic build using a Bazel target (e.g. from the BCR's [`@graphviz`](https://registry.bazel.build/modules/graphviz) module or a local target), pass the label to the **`dot_executable`** attribute.
+
+> [!NOTE]
+> The `@graphviz` module in BCR requires **Bazel >= 8.0.0**. If you are using Bazel >= 8, enable `bazel_dep(name = "graphviz", version = "14.0.0.bcr.3")` in `examples/MODULE.bazel`.
 
 ```bzl
 load("@doxygen//:doxygen.bzl", "doxygen")
